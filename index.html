@@ -6,58 +6,55 @@
     <title>LEGIÓN VIVA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #050505; color: white; font-family: sans-serif; margin: 0; overflow: hidden; }
+        body { background: #000; color: white; font-family: sans-serif; margin: 0; overflow: hidden; }
         .oro { color: #C5A059; }
-        .pantalla-login { position: fixed; inset: 0; background: black; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .input-legion { background: #1a1a1a; border: 1px solid #333; padding: 12px; border-radius: 8px; width: 80%; margin-bottom: 15px; color: white; }
-        .boton-entrar { background: #C5A059; color: black; font-weight: bold; width: 80%; padding: 12px; border-radius: 8px; cursor: pointer; }
-        .video-container { height: 100vh; width: 100%; position: relative; }
-        video { height: 100%; width: 100%; object-fit: cover; background: #111; }
+        /* Animación de fondo soberano */
+        .bg-animado {
+            position: fixed; inset: 0;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            z-index: -1;
+        }
+        .boton-live { background: linear-gradient(90deg, #6A0DAD, #C5A059); border-radius: 20px; padding: 5px 25px; font-weight: bold; cursor: pointer; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
     </style>
 </head>
 <body>
+    <div class="bg-animado"></div>
 
-    <div id="login" class="pantalla-login">
-        <h1 class="oro text-4xl font-black mb-8 italic">LEGIÓN VIVA</h1>
-        <input type="text" placeholder="Usuario" class="input-legion">
-        <input type="password" placeholder="Contraseña" class="input-legion">
-        <button class="boton-entrar" onclick="entrar()">ENTRAR A LA LEGIÓN</button>
-        <p class="text-gray-500 text-xs mt-4">Al entrar aceptas la soberanía de la plataforma</p>
-    </div>
-
-    <div id="app" style="display:none;"> 
-        <div class="video-container">
-            <video id="miVideo" autoplay muted loop playsinline>
-                <source src="https://v.ftcdn.net/04/79/33/84/700_F_479338421_mXkG6z5jA2W2PqQ6qM5z9z9z9z9z9z.mp4" type="video/mp4">
-            </video>
-
-            <div class="absolute bottom-24 left-5">
-                <h2 class="font-bold text-xl">@Vruan <span class="text-blue-400 text-sm">✔</span></h2>
-                <p class="text-sm">Dominio total. 🔱</p>
-            </div>
-
-            <div class="absolute right-4 bottom-28 flex flex-col gap-6">
-                <button onclick="alert('Poder enviado')" class="text-4xl">🔱</button>
-                <button onclick="regalo()" class="text-4xl oro">💎</button>
-            </div>
+    <div class="h-screen flex flex-col justify-between p-6">
+        <div class="flex justify-between items-center">
+            <h1 class="oro italic font-black text-2xl">LEGIÓN VIVA</h1>
+            <span class="text-xs border border-gray-600 px-2 py-1 rounded">SERVIDOR ACTIVO</span>
         </div>
 
-        <nav class="fixed bottom-0 w-full bg-black border-t border-gray-800 flex justify-around py-4">
-            <span class="text-2xl">🏠</span>
-            <div class="bg-white text-black px-4 rounded-lg font-bold" onclick="alert('Cargar video próximamente')">+</div>
-            <span class="text-2xl">👤</span>
-        </nav>
+        <div class="text-left mb-20">
+            <h2 class="font-bold text-2xl">@Vruan <span class="text-blue-400 text-sm">✔</span></h2>
+            <p class="text-gray-300">Dominio total sobre el entorno y la realidad. 🔱</p>
+            <p class="oro text-sm mt-2 font-bold italic">Soberanía Biológica y Vitalidad al 100%</p>
+        </div>
+
+        <div class="absolute right-6 bottom-40 flex flex-col gap-8 items-center">
+            <div onclick="alert('Poder enviado 🔱')" class="text-center">
+                <span class="text-4xl block">🔱</span>
+                <small>66.6K</small>
+            </div>
+            <div onclick="regalo()" class="text-center">
+                <span class="text-4xl block oro">💎</span>
+                <small class="oro">REGALO</small>
+            </div>
+        </div>
     </div>
 
+    <nav class="fixed bottom-0 w-full bg-black border-t border-gray-800 flex justify-around items-center py-6">
+        <span class="text-3xl cursor-pointer">🏠</span>
+        <div class="boton-live" onclick="alert('SISTEMA LIVE: Iniciando transmisión de alto impacto...')">LIVE</div>
+        <span class="text-3xl cursor-pointer" onclick="alert('Perfil de Soberano')">👤</span>
+    </nav>
+
     <script>
-        function entrar() {
-            document.getElementById('login').style.display = 'none';
-            document.getElementById('app').style.display = 'block';
-            document.getElementById('miVideo').play();
-        }
         function regalo() {
-            let c = prompt("¿Cuántos Diamantes?");
-            if(c) alert("Enviados " + c + " diamantes a Vruan.");
+            let cant = prompt("¿Cuántos Diamantes para la Legión?", "100");
+            if(cant) alert("Has enviado " + cant + " Diamantes. Lealtad confirmada.");
         }
     </script>
 </body>
