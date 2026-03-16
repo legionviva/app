@@ -6,40 +6,61 @@
     <title>LEGIÓN VIVA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #050505; color: white; font-family: sans-serif; margin: 0; }
-        .pantalla { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 2px solid #1a1a1a; position: relative; }
+        body { background-color: #050505; color: white; font-family: sans-serif; margin: 0; overflow: hidden; }
+        .video-container { height: 100vh; width: 100%; position: relative; background: black; }
+        video { height: 100%; width: 100%; object-fit: cover; }
         .oro { color: #C5A059; }
-        .boton-live { background: linear-gradient(90deg, #6A0DAD, #C5A059); border-radius: 20px; padding: 5px 20px; font-weight: bold; }
-        .iconos-derecha { position: absolute; right: 15px; bottom: 100px; display: flex; flex-direction: column; gap: 20px; }
+        .boton-live { background: linear-gradient(90deg, #6A0DAD, #C5A059); border-radius: 20px; padding: 5px 20px; font-weight: bold; cursor: pointer; }
+        .ui-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; pointer-events: none; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 40%); }
+        .controles { position: absolute; right: 15px; bottom: 120px; display: flex; flex-direction: column; gap: 25px; pointer-events: auto; }
+        .interaccion { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.2s; }
+        .interaccion:active { transform: scale(1.2); }
     </style>
 </head>
 <body>
 
-    <div class="pantalla">
-        <div style="text-align: center;">
-            <h1 class="oro text-4xl font-black">LEGIÓN VIVA</h1>
-            <p class="text-gray-500 italic">Cargando el poder...</p>
-        </div>
+    <div class="video-container">
+        <video id="miVideo" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-mysterious-pale-looking-woman-with-black-makeup-40011-large.mp4" type="video/mp4">
+        </video>
 
-        <div class="absolute bottom-20 left-5">
-            <p class="font-bold text-lg">@Vruan</p>
-            <p class="text-sm">El dominio total ha comenzado. 🔱 #Soberania</p>
-        </div>
+        <div class="ui-overlay">
+            <div class="absolute bottom-24 left-5 pointer-events-auto">
+                <h2 class="font-bold text-xl">@Vruan <span class="text-blue-400 text-sm">✔</span></h2>
+                <p class="text-sm">El dominio total ha comenzado. Bienvenido a la Legión. 🔱</p>
+                <p class="text-xs oro mt-2">♫ Sonido original - Vruan So Seguirá</p>
+            </div>
 
-        <div class="iconos-derecha text-center">
-            <div><span class="text-3xl">🔱</span><br><small>66K</small></div>
-            <div><span class="text-3xl">💬</span><br><small>1K</small></div>
-            <div><span class="text-3xl oro">💎</span><br><small>Regalo</small></div>
+            <div class="controles">
+                <div class="interaccion" onclick="alert('¡Poder entregado! 🔱')">
+                    <span class="text-4xl">🔱</span>
+                    <small>66K</small>
+                </div>
+                <div class="interaccion" onclick="alert('Comentarios próximamente...')">
+                    <span class="text-4xl">💬</span>
+                    <small>1.2K</small>
+                </div>
+                <div class="interaccion" onclick="enviarRegalo()">
+                    <span class="text-4xl oro">💎</span>
+                    <small>Regalo</small>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="fixed bottom-0 w-full bg-black border-t border-gray-800 flex justify-around items-center py-4">
-        <span class="text-2xl">🏠</span>
-        <span class="text-2xl text-gray-600">🔍</span>
-        <div class="boton-live">LIVE</div>
-        <span class="text-2xl text-gray-600">✉️</span>
-        <span class="text-2xl text-gray-600">👤</span>
-    </div>
+    <nav class="fixed bottom-0 w-full bg-black border-t border-gray-800 flex justify-around items-center py-4 z-50">
+        <span class="text-2xl cursor-pointer">🏠</span>
+        <span class="text-2xl text-gray-600 cursor-pointer">🔍</span>
+        <div class="boton-live" onclick="alert('Iniciando Transmisión en Vivo...')">LIVE</div>
+        <span class="text-2xl text-gray-600 cursor-pointer">✉️</span>
+        <span class="text-2xl text-gray-600 cursor-pointer">👤</span>
+    </nav>
 
+    <script>
+        function enviarRegalo() {
+            let cant = prompt("¿Cuántos Diamantes enviar a Vruan?", "10");
+            if(cant) alert("Has enviado " + cant + " Diamantes. ¡Lealtad confirmada!");
+        }
+    </script>
 </body>
 </html>
