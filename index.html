@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGIÓN VIVA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #050505; color: white; font-family: sans-serif; margin: 0; }
+        .pantalla { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 2px solid #1a1a1a; position: relative; }
+        .oro { color: #C5A059; }
+        .boton-live { background: linear-gradient(90deg, #6A0DAD, #C5A059); border-radius: 20px; padding: 5px 20px; font-weight: bold; }
+        .iconos-derecha { position: absolute; right: 15px; bottom: 100px; display: flex; flex-direction: column; gap: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="pantalla">
+        <div style="text-align: center;">
+            <h1 class="oro text-4xl font-black">LEGIÓN VIVA</h1>
+            <p class="text-gray-500 italic">Cargando el poder...</p>
+        </div>
+
+        <div class="absolute bottom-20 left-5">
+            <p class="font-bold text-lg">@Vruan</p>
+            <p class="text-sm">El dominio total ha comenzado. 🔱 #Soberania</p>
+        </div>
+
+        <div class="iconos-derecha text-center">
+            <div><span class="text-3xl">🔱</span><br><small>66K</small></div>
+            <div><span class="text-3xl">💬</span><br><small>1K</small></div>
+            <div><span class="text-3xl oro">💎</span><br><small>Regalo</small></div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 w-full bg-black border-t border-gray-800 flex justify-around items-center py-4">
+        <span class="text-2xl">🏠</span>
+        <span class="text-2xl text-gray-600">🔍</span>
+        <div class="boton-live">LIVE</div>
+        <span class="text-2xl text-gray-600">✉️</span>
+        <span class="text-2xl text-gray-600">👤</span>
+    </div>
+
+</body>
+</html>
